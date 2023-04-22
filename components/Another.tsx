@@ -48,7 +48,7 @@ const Another = ({userVideos, userLikedVideos}: IProps) => {
                             <VideoCard post={video} key={i} />
                         ))
                     // <div>Loading...</div>
-                    : <NoResults text={ `No ${current === 'liked' && 'liked'} videos yet` } />}
+                    : <NoResults text={ `No ${current === 'liked' ? 'liked' : ''} videos yet` } />}
                 </div>
         </div>
     )

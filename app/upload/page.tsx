@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
@@ -23,8 +23,16 @@ const Upload = (props: Props) => {
  const [category, setCategory] = useState(topics[0].name)
 
  const {userProfile}: {userProfile: any} = useAuthStore()
+    const router = useRouter()
+    
+ useEffect(() => {
+     if ( !userProfile ) {
+        alert('please login to continue')
+        router.push('/')
+    }
+ }, [userProfile])
 
- const router = useRouter()
+
 
     const uploadVideo = async ( e: any ) => {
         setWrongFileType(false) 

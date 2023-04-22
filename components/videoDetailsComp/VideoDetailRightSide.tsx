@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
@@ -10,7 +10,7 @@ import LikeButton from "@/components/videoDetailsComp/LikeButton";
 import Comments from "@/components/videoDetailsComp/Comments";
 import axios from "axios";
 import { base_url } from "@/app/layout";
-
+import {useRouter} from 'next/navigation'
 type Props = {
  post: Video;
 };
@@ -18,7 +18,13 @@ type Props = {
 const VideoDetailRightSide = ({ post }: Props) => {
  const { userProfile }: any = useAuthStore();
 
-
+    const router = useRouter()
+ useEffect(() => {
+     if ( !userProfile ) {
+        alert('please login to continue')
+        router.push('/')
+    }
+ }, [userProfile])
  return (
   <div className="mt-10 lg:mt-2 h-full">
    <div className="flex gap-2 p-2 cursor-pointer font-semibold rounded items-center">
