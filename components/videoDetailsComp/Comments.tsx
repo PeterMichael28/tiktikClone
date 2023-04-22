@@ -10,7 +10,7 @@ import axios from "axios";
 import { base_url } from "@/app/layout";
 import { v4 as uuidv4 } from "uuid";
 import CommentSection from "@/components/videoDetailsComp/CommentSection";
-import { onClickLight } from "@/utils/utils/constants";
+
 
 interface IProps {
  post: Video;
@@ -166,11 +166,8 @@ const Comments = ({ post }: IProps) => {
             <AiFillDelete
              className="cursor-pointer hover:scale-90 w-5 h-5"
              onClick={() =>
-              onClickLight(
-               "Delete Comment",
-               "Are you sure you want to delete this comment?",
-               () => delComment(comment._key)
-              )
+              delComment(comment._key)
+              
              }
             />
            </div>

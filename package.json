@@ -32,7 +32,6 @@
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4",
     "uuidv4": "^6.2.13",
-    "zustand": "^4.0.0-rc.1",
-    "react-confirm-pro": "^1.2.2"
+    "zustand": "^4.0.0-rc.1"
   }
 }
