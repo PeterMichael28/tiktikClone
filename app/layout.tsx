@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import './globals.css'
 import Sidebar from '@/components/Sidebar';
-import GoogleAuth from '@/components/GoogleAuth'
+
 
 
 export const metadata = {
@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
           <div className='xl:w-[1200px] m-auto overflow-hidden h-[100vh]'>
-        <GoogleAuth>
+       
         <Navbar/>
-        </GoogleAuth>
+       
         <div className='flex gap-6 md:gap-20'>
           <div className='h-[92vh] overflow-hidden lg:hover:overflow-auto'>
            < Sidebar />

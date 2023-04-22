@@ -1,5 +1,5 @@
 "use client";
-
+import GoogleAuth from '@/components/GoogleAuth'
 import React, { useState, useEffect } from "react";
 import useAuthStore from "@/store/authStore";
 import {
@@ -38,6 +38,7 @@ const NavUserProfile = () => {
 
 
  return (
+    <GoogleAuth>
   <div>
    {userProfile ? (
     <div className="flex gap-5 md:gap-10">
@@ -83,6 +84,7 @@ const NavUserProfile = () => {
     />
    )}
   </div>
+  </GoogleAuth>
  );
 };
 
