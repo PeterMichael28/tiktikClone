@@ -16,14 +16,18 @@ import Link from "next/link";
 import { IUser } from "@/types";
 import {useRouter} from 'next/navigation'
 
-type Props = {};
+type Props = {
+    userProfile: any;
+    addUser: ( user: any ) => any;
+    removeUser: () => any;
+};
 
-const NavUserProfile = (props: Props) => {
+const NavUserProfile = () => {
  const {
   userProfile,
   addUser,
   removeUser,
- }= useAuthStore();
+}: Props= useAuthStore();
 
  const errorMessage = () => {
   console.log("Error");

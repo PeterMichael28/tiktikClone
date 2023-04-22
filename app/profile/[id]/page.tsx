@@ -3,7 +3,6 @@ import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 import { Video, IUser } from "@/types";
 import NoResults from "@/components/NoResults";
-import ProfileDetailVideos from "@/components/ProfileDetailVideos";
 import Another from "@/components/Another";
 import axios from "axios";
 import { base_url } from "@/app/layout";
@@ -41,7 +40,6 @@ export default async function Page({
             </div>
 
 
-            {/* <ProfileDetailVideos userVideos={ userVideos } userLikedVideos={ userLikedVideos } /> */}
 
             <Another userVideos={ userVideos } userLikedVideos={ userLikedVideos }/>
             
