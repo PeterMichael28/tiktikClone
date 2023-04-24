@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { MdFavorite } from "react-icons/md";
 import useAuthStore from "@/store/authStore";
 import axios from "axios";
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 import { Video } from "@/types";
 
 interface IProps {
@@ -13,20 +13,23 @@ interface IProps {
 }
 
 const LikeButton = ({ likes, post }: IProps) => {
+    const [isSSR, setIsSSR] = useState(true);
+    useEffect(() => {
+     setIsSSR(false);
+    }, []);
+
+
  const { userProfile }: any = useAuthStore();
  const [alreadyLiked, setAlreadyLiked] = useState(false);
  const [allLikes, setAllLikes] = useState(likes);
  const filterLikes = allLikes?.filter(
   (like) => like._ref === userProfile?._id
  );
+ 
 
- const [isSSR, setIsSSR] = useState(true);
- useEffect(() => {
-  setIsSSR(false);
- }, []);
 
  useEffect(() => {
-  if (filterLikes.length > 0) {
+  if (filterLikes && filterLikes.length > 0) {
    setAlreadyLiked(true);
   } else {
    setAlreadyLiked(false);
@@ -37,7 +40,7 @@ const LikeButton = ({ likes, post }: IProps) => {
  // console.log(post)
 
  const handleLike = async (like: boolean) => {
-  if (userProfile) {
+  if (userProfile !== null) {
    if (filterLikes.length > 0) {
     setAllLikes(
      allLikes?.filter(
@@ -78,7 +81,7 @@ const LikeButton = ({ likes, post }: IProps) => {
   <div>
    {!isSSR && (
     <div className="gap-2 flex">
-     {userProfile && (
+     {userProfile !== null && (
       <div className="mt-1 flex flex-col justify-center items-center cursor-pointer">
        {alreadyLiked ? (
         <div
@@ -98,7 +101,7 @@ const LikeButton = ({ likes, post }: IProps) => {
         </div>
        )}
        <p className="text-md font-semibold">
-        {allLikes.length}
+        {allLikes?.length}
        </p>
       </div>
      )}

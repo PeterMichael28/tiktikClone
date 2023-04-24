@@ -1,4 +1,4 @@
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 import Videos from "@/components/Videos";
 import CancelBtn from "@/components/videoDetailsComp/CancelBtn";
 
@@ -15,7 +15,7 @@ export default async function Page({
  const data = await axios.get(
   `${base_url}/api/post/${params.id}`
  );
- // console.log(data.data[0]._id)
+
 
  // if(!data) return null
 

@@ -9,7 +9,7 @@ import { SanityAssetDocument } from "@sanity/client";
 import { topics } from "@/utils/utils/constants";
 import useAuthStore from '@/store/authStore'
 import { useRouter } from 'next/navigation';
-import { base_url } from "../layout";
+import { base_url } from '@/utils/utils/constants';
 
 
 type Props = {};
@@ -27,8 +27,8 @@ const Upload = (props: Props) => {
     
  useEffect(() => {
      if ( !userProfile ) {
-        alert('please login to continue')
-        router.push('/')
+         router.push('/')
+         alert('please login to continue')
     }
  }, [userProfile])
 

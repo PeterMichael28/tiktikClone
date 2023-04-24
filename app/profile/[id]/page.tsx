@@ -5,7 +5,7 @@ import { Video, IUser } from "@/types";
 import NoResults from "@/components/NoResults";
 import Another from "@/components/Another";
 import axios from "axios";
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 
 
 interface IProps{

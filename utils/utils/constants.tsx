@@ -43,3 +43,6 @@ export const footerList3 = [ 'Help', 'Safety', 'Terms', 'Privacy', 'Creator Port
 
 
 
+// export const base_url = 'http://localhost:3000'
+
+export const base_url = process.env.NEXT_PUBLIC_BASE_URL;

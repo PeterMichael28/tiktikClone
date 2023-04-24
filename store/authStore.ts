@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import axios from 'axios';
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 
 const authStore = ( set: any ) => ( {
     userProfile: null,

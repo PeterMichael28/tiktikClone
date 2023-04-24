@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import './globals.css'
 import Sidebar from '@/components/Sidebar';
-
+import GoogleAuth from '@/components/GoogleAuth'
 
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Cloned by michael peter',
 }
 
-export const base_url = 'http://localhost:3000'
+
 
 export default function RootLayout({
   children,
@@ -20,6 +20,7 @@ export default function RootLayout({
 
     <html lang="en">
       <body>
+        <GoogleAuth>
           <div className='xl:w-[1200px] m-auto overflow-hidden h-[100vh]'>
        
         <Navbar/>
@@ -36,7 +37,7 @@ export default function RootLayout({
             
         </div>
       
-       
+        </GoogleAuth>
         </body>
     </html>
   )

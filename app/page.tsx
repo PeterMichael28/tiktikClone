@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Video } from '@/types';
 import VideoCard from '@/components/VideoCard';
 import NoResults from '@/components/NoResults';
-import { base_url } from './layout';
+import { base_url } from '@/utils/utils/constants';
 const inter = Inter({ subsets: ['latin'] })
 
 

@@ -7,7 +7,7 @@ import { Video } from "@/types";
 import NoResults from "../NoResults";
 import useAuthStore from "@/store/authStore";
 import axios from "axios";
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 import { v4 as uuidv4 } from "uuid";
 import CommentSection from "@/components/videoDetailsComp/CommentSection";
 
@@ -39,7 +39,7 @@ const Comments = ({ post }: IProps) => {
  useEffect(() => {
   setIsSSR(false);
 
-  if (posts.comments) {
+  if (posts.comments && post.comments !== null) {
    setComments(posts?.comments);
   } else {
    setComments([]);
@@ -99,7 +99,7 @@ const Comments = ({ post }: IProps) => {
    }
   );
 
-  console.log(res?.data?.comments);
+
 
   if (res?.data?.comments?.length > 0) {
    setPosts({
@@ -119,7 +119,7 @@ const Comments = ({ post }: IProps) => {
    {!isSSR && (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[20px] mt-1 mb-2">
      <div className="overflow-scroll h-[400px] ">
-      {comments && comments?.length > 0 ? (
+      {comments !== null && comments?.length > 0 ? (
        //  <CommentSection comments={comments} />
        <div>
         {comments?.map(
@@ -182,7 +182,7 @@ const Comments = ({ post }: IProps) => {
       )}
      </div>
 
-     {userProfile && (
+     {userProfile !== null && (
       <div className="absolute -bottom-5 left-0 pb-2 px-2 md:px-5 mt-3 w-full bg-white">
        <form className="flex gap-4" onSubmit={addComment}>
         <input

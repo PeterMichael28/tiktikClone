@@ -21,7 +21,7 @@ const Videos = ({ post, className }: Props) => {
 
  return (
      <video
-      src={vid.video.asset.url}
+      src={vid?.video?.asset?.url}
       loop
       ref={videoRef}
       autoPlay

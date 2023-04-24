@@ -1,5 +1,5 @@
 import axios from "axios";
-import { base_url } from "@/app/layout";
+import { base_url } from '@/utils/utils/constants';
 import { Video } from "@/types";
 import SearchComp from "@/components/SearchComp";
 

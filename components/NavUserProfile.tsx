@@ -1,5 +1,5 @@
 "use client";
-import GoogleAuth from '@/components/GoogleAuth'
+
 import React, { useState, useEffect } from "react";
 import useAuthStore from "@/store/authStore";
 import {
@@ -23,11 +23,19 @@ type Props = {
 };
 
 const NavUserProfile = () => {
+  const [ isSSR, setIsSSR ] = useState( true );
+  
+  useEffect(() => {
+   setIsSSR(false);
+   }, []);
+
+
+
  const {
   userProfile,
   addUser,
   removeUser,
-}: Props= useAuthStore();
+}: Props = useAuthStore();
 
  const errorMessage = () => {
   console.log("Error");
@@ -37,55 +45,60 @@ const NavUserProfile = () => {
 
 
 
+
  return (
-    <GoogleAuth>
-  <div>
-   {userProfile ? (
-    <div className="flex gap-5 md:gap-10">
-     <Link href="/upload">
-      <button className="border-2 px-2 py-1 md:px-4 text-md font-semibold flex items-center gap-2">
-       <IoMdAdd className="text-xl" />{" "}
-       <span className="hidden md:block">Upload</span>
-      </button>
-     </Link>
+  <>
+  {!isSSR && (
+        <div>
+        {userProfile? (
+         <div className="flex gap-5 md:gap-10">
+          <Link href="/upload">
+           <button className="border-2 px-2 py-1 md:px-4 text-md font-semibold flex items-center gap-2">
+            <IoMdAdd className="text-xl" />{" "}
+            <span className="hidden md:block">Upload</span>
+           </button> 
+          </Link>
+     
+          {userProfile?.image && (
+           <Link href={`/profile/${userProfile?._id}`}>
+            <>
+             <Image
+              alt="image"
+              src={userProfile?.image}
+              width={35}
+              height={35}
+              className="rounded-full cursor-pointer"
+             />
+            </>
+           </Link>
+          )}
+     
+          <button
+           className="px-2"
+           onClick={() => {
+            googleLogout();
+            removeUser();
+            router.push('/')
+           }}
+          >
+           <AiOutlineLogout color="red" fontSize={21} />
+          </button>
+         </div>
+        ) : (
+         <GoogleLogin
+          onSuccess={(response) =>
+           createOrGetUser(response, addUser)
+          }
+          onError={errorMessage}
+          text="signin"
+         />
+        )}
+       </div>
+  )}
+  </>
 
-     {userProfile.image && (
-      <Link href={`/profile/${userProfile?._id}`}>
-       <>
-        <Image
-         alt="image"
-         src={userProfile.image}
-         width={35}
-         height={35}
-         className="rounded-full cursor-pointer"
-        />
-       </>
-      </Link>
-     )}
 
-     <button
-      className="px-2"
-      onClick={() => {
-       googleLogout();
-       removeUser();
-       router.push('/')
-      }}
-     >
-      <AiOutlineLogout color="red" fontSize={21} />
-     </button>
-    </div>
-   ) : (
-    <GoogleLogin
-     onSuccess={(response) =>
-      createOrGetUser(response, addUser)
-     }
-     onError={errorMessage}
-     text="signin"
-    />
-   )}
-  </div>
-  </GoogleAuth>
  );
-};
+}; 
 
 export default NavUserProfile;
