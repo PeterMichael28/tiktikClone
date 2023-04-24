@@ -36,12 +36,12 @@ const LikeButton = ({ likes, post }: IProps) => {
   }
  }, [allLikes, filterLikes]);
 
- // console.log(allLikes)
- // console.log(post)
+//  console.log(allLikes)
+//  console.log(post)
 
  const handleLike = async (like: boolean) => {
   if (userProfile !== null) {
-   if (filterLikes.length > 0) {
+   if (filterLikes && filterLikes.length > 0) {
     setAllLikes(
      allLikes?.filter(
       (like) => like._ref !== userProfile._id

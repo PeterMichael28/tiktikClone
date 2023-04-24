@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'tiktikSanity',
 
-  projectId: 'gx4o9x9p',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
